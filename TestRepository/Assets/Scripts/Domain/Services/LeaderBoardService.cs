@@ -17,5 +17,17 @@ namespace Domain.Services
         {
             _leaderBoardRepository.GetLeaderBoard(onSuccess);
         }
+        public void GetLeaderBoardOrderedByName(Action<List<LeaderBoardItem>> onSuccess)
+        {
+            _leaderBoardRepository.GetLeaderBoardOrderedByName(onSuccess);
+        }
+        public void GetLeaderBoardOrderedByScore(Action<List<LeaderBoardItem>> onSuccess)
+        {
+            _leaderBoardRepository.GetLeaderBoardOrderedByScore(onSuccess);
+        }
+        public void AddLeaderboardItem(LeaderBoardItem item, Action onSuccess)
+        {
+            _leaderBoardRepository.AddLeaderboardItem(item, onSuccess);
+        }
     }
 }

@@ -20,13 +20,21 @@ public class LeaderBoardView : MonoBehaviour
         GetLeaderBoard();
     }
 
-    private void GetLeaderBoard()
+    public void GetLeaderBoard()
     {
-        _leaderBoardService.GetLeaderBoard(OnLeaderBoardGeted);
+        _leaderBoardService.GetLeaderBoardOrderedByScore(OnLeaderBoardGeted);
     }
 
     private void OnLeaderBoardGeted(List<LeaderBoardItem> items)
     {
+        if (_container.childCount != 0)
+        {
+            foreach (Transform item in _container)
+            {
+                Destroy(item.gameObject);
+            }
+        }
+
         foreach (var item in items)
         {
             var leaderboardItem = Instantiate(_leaderBoardItemViewPrefab, _container);

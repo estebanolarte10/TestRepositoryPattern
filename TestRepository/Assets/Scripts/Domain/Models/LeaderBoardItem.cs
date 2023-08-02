@@ -8,8 +8,24 @@ namespace Domain.Models
         {
             _name = name;
             _score = score;
+            ValidateName();
+            ValidateScore();
         }
 
+        private void ValidateName()
+        {
+            if (string.IsNullOrEmpty(_name))
+            {
+                throw new EmptyNameException("The name cannot be empty.");
+            }
+        }
+        private void ValidateScore()
+        {
+            if (_score < 0)
+            {
+                throw new NegativeScoreException("The score cannot be negative");
+            }
+        }
         public string GetName()
         {
             return _name;
